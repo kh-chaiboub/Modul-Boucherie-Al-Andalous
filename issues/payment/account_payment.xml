@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        
+        
+    <record id="dgh_view_account_payment_form" model="ir.ui.view">
+            <field name="name">dgh.view_account_payment_form</field>
+            <field name="model">account.payment</field>
+	        <field name="inherit_id" ref="account.view_account_payment_form"/>
+	        <field name="arch" type="xml">
+                <field name="payment_method_id" position="after">
+                    <field name="ms_number" 
+                        attrs="{'invisible': [('payment_method_code', 'not in', ['LC','CHQ'])],
+                                'required': [('payment_method_code', 'in', ['LC','CHQ'])]}"/>
+                	</field>
+	     	</field>
+    </record>
+    
+     <record id="dgh_view_account_payment_register_form" model="ir.ui.view">
+            <field name="name">dgh.account.payment.register.form</field>
+            <field name="model">account.payment.register</field>
+            <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+            <field name="arch" type="xml">
+                <field name="payment_method_id" position="after">
+                
+                    <field name="payment_method_code"  invisible="1"/>
+                    <field name="ms_number" 
+                        attrs="{'invisible': [('payment_method_code', 'not in', ['LC','CHQ'])],
+                                'required': [('payment_method_code', 'in', ['LC','CHQ'])]}"/>
+                	</field>
+            </field>
+      </record>
+        
+        
+        
+        
+<!--         <record id="ms_view_account_payment_invoice_form" model="ir.ui.view"> -->
+<!--             <field name="name">ms.view_account_payment_invoice_form</field> -->
+<!--             <field name="model">account.payment</field> -->
+<!--             <field name="inherit_id" ref="account.view_account_payment_invoice_form"/> -->
+<!--             <field name="arch" type="xml"> -->
+<!--                 <field name="payment_method_id" position="after"> -->
+<!--                     <field name="ms_number"  -->
+<!--                         attrs="{'invisible': [('payment_method_code', 'not in', ['LC','CHQ'])], -->
+<!--                                 'required': [('payment_method_code', 'in', ['LC','CHQ'])]}"/> -->
+<!--                 </field> -->
+<!--             </field> -->
+<!--         </record> -->
+        
+
+
+<!--         <record id="ms_account_view_account_payment_search" model="ir.ui.view"> -->
+<!--             <field name="name">account.payment.search</field> -->
+<!--             <field name="model">account.payment</field> -->
+<!--             <field name="inherit_id" ref="account.view_account_payment_search"/> -->
+<!--             <field name="arch" type="xml"> -->
+<!--             	<field name="name"  position="replace"> -->
+<!--             		<field name="name" filter_domain="['|','|', ('name','ilike',self), ('communication','ilike',self), ('ms_number','ilike',self)]" string="Description"/> -->
+<!--             	</field> -->
+<!--             </field> -->
+<!--          </record> -->
+            
+				
+
+
+		
+		
+  </data>
+</odoo>
+
+

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+    <record id="account_payment_method_lcn_in" model="account.payment.method">
+        <field name="name">Lettre de change</field>
+        <field name="code">LC</field>
+        <field name="payment_type">inbound</field>
+    </record>
+    <record id="account_payment_method_lcn_out" model="account.payment.method">
+        <field name="name">Lettre de change</field>
+        <field name="code">LC</field>
+        <field name="payment_type">outbound</field>
+    </record>
+    <record id="account_payment_method_virement_in" model="account.payment.method">
+        <field name="name">Virement</field>
+        <field name="code">VIR</field>
+        <field name="payment_type">inbound</field>
+    </record>
+    <record id="account_payment_method_virement_out" model="account.payment.method">
+        <field name="name">Virement</field>
+        <field name="code">VIR</field>
+        <field name="payment_type">outbound</field>
+    </record>
+    <record id="account_payment_method_cheque_in" model="account.payment.method">
+        <field name="name">Chéque</field>
+        <field name="code">CHQ</field>
+        <field name="payment_type">inbound</field>
+    </record>
+    <record id="account_payment_method_cheque_out" model="account.payment.method">
+        <field name="name">Chéque</field>
+        <field name="code">CHQ</field>
+        <field name="payment_type">outbound</field>
+    </record>
+        </data>
+</odoo>
+
+

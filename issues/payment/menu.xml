@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+        
+        
+ 	<menuitem id="menu_account_payment_method_action" parent="account.menu_finance_configuration" name="Méthodes Paiement"  
+ 	sequence="10" action="account_payment_method_action" groups="account.group_account_manager" />
+	
+	 			
+</data>
+</odoo>

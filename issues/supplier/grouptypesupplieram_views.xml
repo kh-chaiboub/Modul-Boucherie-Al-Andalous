@@ -1,0 +1,17 @@
+<odoo>
+
+        <record id="ms_account_view_account_move_filter" model="ir.ui.view">
+            <field name="name">account.move.add.refe_alandalous</field>
+            <field name="model">account.move</field>
+             <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+            	<field name="payment_reference" position="replace">
+					
+					<field name="refe_alandalous" placeholder="Réf" string="Reference"/>
+					
+	            </field> 
+            </field>
+        </record>
+         
+
+</odoo>

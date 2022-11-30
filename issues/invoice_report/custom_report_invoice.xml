@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+	<template id="custom_report_invoice_alandalous"
+		inherit_id="account.report_invoice_document">
+
+		<xpath expr="//t[@t-set='address']" position="replace">
+			<h3 style="position: relative;left: 35%;color:#000000;">
+				<span>CLIENT :</span>
+				<span t-field="o.partner_id" t-options='{"fields": ["name"]}' />
+			</h3>
+			<br />
+
+			<h4 style="position: relative;left: 20%;">
+				<address t-field="o.partner_id"
+					t-options='{"widget": "contact", "fields": ["address"]}' />
+			</h4>
+			<br />
+		</xpath>
+		<xpath expr="//div[@id='informations']" position="before">
+			<div class="col-auto col-3 mw-100 mb-2" t-if="o.refe_alandalous"
+				name="reference" style="position: relative;left: 20%;">
+				<strong>BON DE LIVRAISON N°:</strong>
+
+				<span t-field="o.refe_alandalous" />
+
+				<br />
+
+			</div>
+		</xpath>
+
+		<xpath expr="//div/h2" position="replace">
+			<h2 style="position: relative;left: 20%;">
+                 <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">Facture d'achat</span>
+                 <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">Brouillon de facture</span>
+                 <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">Facture annulée</span>
+                 <span t-if="o.move_type == 'out_refund'">Note de crédit</span>
+                 <span t-if="o.move_type == 'in_refund'">Note de crédit fournisseur</span>
+                 <span t-if="o.move_type == 'in_invoice'">Facture du fournisseur</span>
+                 <span t-if="o.name != '/'" t-field="o.name"/>
+             </h2>
+			
+		</xpath>
+
+
+		<xpath expr="//div/p[@name='payment_communication']"
+			position="replace">
+			<br />
+			<h4>
+				Annexe la Présente Facture à la somme de :
+				<b>
+					<span
+						t-esc="o.currency_id.with_context(lang='es_AR').amount_to_text(o.amount_total)" />
+				</b>
+			</h4>
+		</xpath>
+	</template>
+	<template id="custom_report_invoice_alandalous_lay"
+		inherit_id="web.external_layout_background">
+
+		<xpath expr="//div[@class='float-left company_address']"
+			position="replace">
+			<center>
+				<h2>
+					<strong t-field="company.partner_id.name" />
+				</h2>
+			</center>
+
+		</xpath>
+
+		<xpath expr="//div[@class='text-center']" position="replace">
+			<ul class="list-inline">
+				<li t-if="company.street" class="list-inline-item">
+					<i class="fa fa-s" role="img" aria-label="Adresse"
+						title="Adresse" />
+					BOUCHERIE EL ANDALOUS/ ADRESSE :
+					<span t-field="company.street" />
+				</li>
+				<li t-if="company.phone" class="list-inline-item">
+					<i class="fa fa-phone" role="img" aria-label="Phone"
+						title="Phone" />
+					<span class="o_force_ltr" t-field="company.phone" />
+				</li>
+				<li t-if="company.email" class="list-inline-item">
+					<i class="fa fa-at" role="img" aria-label="Email" title="Email" />
+					<span t-field="company.email" />
+				</li>
+				<li t-if="company.website" class="list-inline-item">
+					<i class="fa fa-globe" role="img" aria-label="Website"
+						title="Website" />
+					<span t-field="company.website" />
+				</li>
+				<li t-if="company.vat" class="list-inline-item">
+					<i class="fa fa-building-o" role="img" aria-label="Fiscal number" />
+					<t t-esc="company.country_id.vat_label or 'Tax ID'" />
+					:
+					<span t-field="company.vat" />
+				</li>
+
+			</ul>
+
+		</xpath>
+
+
+	</template>
+
+
+</odoo>
